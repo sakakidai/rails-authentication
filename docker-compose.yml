@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - postgress-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      TZ: "Asia/Tokyo"
+      PGTZ: "Asia/Tokyo"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        WORKDIR: $WORKDIR
+    working_dir: ${WORKDIR}
+    init: true
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:${WORKDIR}
+      # - bundle:${WORKDIR}/vendor/builde
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: ${RAILS_ENV}
+      BUNDLE_PATH: "vendor/bundle"
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      TZ: Asia/Tokyo
+volumes:
+  postgress-data:
+  # bundle:
