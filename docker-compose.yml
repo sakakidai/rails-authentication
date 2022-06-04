@@ -9,7 +9,6 @@ services:
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
       TZ: "Asia/Tokyo"
       PGTZ: "Asia/Tokyo"
 
@@ -35,7 +34,6 @@ services:
       BUNDLE_PATH: "vendor/bundle"
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-      DB_NAME: ${DB_NAME}
       TZ: Asia/Tokyo
 volumes:
   postgress-data:
