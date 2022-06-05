@@ -2,20 +2,17 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
+  username: <%= ENV.fetch("DB_USER") { 'postgres' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") {} %>
 
 development:
   <<: *default
   database: rails_authentication_development
-  host: db
-  username: <%= ENV.fetch("DB_USER") { 'postgres' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") {} %>
-
+  
 test:
   <<: *default
   database: rails_authentication_test
-  host: db
-  username: <%= ENV.fetch("DB_USER") { 'postgres' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") {} %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -37,8 +34,8 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# Doc: https://devcenter.heroku.com/articles/ruby-support#build-behavior
+# Doc: https://guides.rubyonrails.org/configuring.html#configuring-a-database
+# Use Heroku Postgres in addons 
 production:
-  <<: *default
-  database: rails_authentication_production
-  username: rails_authentication
-  password: <%= ENV["RAILS_AUTHENTICATION_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
