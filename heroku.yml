@@ -11,10 +11,9 @@ setup:
     RAILS_SERVE_STATIC_FILES: enabled
 build:
   docker:
-    web: Dockerfile
+    web: Dockerfile.prd
   # Same Mean as args in docker-compose.yml
   config:
     WORKDIR: rails_authentication
 run:
-  # web: bundle exec puma -C config/puma.rb
-  web: bash
+  web: bundle exec puma -C config/puma.rb
