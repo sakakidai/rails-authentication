@@ -16,4 +16,5 @@ build:
   config:
     WORKDIR: rails_authentication
 run:
-  web: bundle exec puma -C config/puma.rb
+  # web: bundle exec puma -C config/puma.rb
+  web: bash
