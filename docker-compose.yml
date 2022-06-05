@@ -32,10 +32,9 @@ services:
       - db
     environment:
       RAILS_ENV: ${RAILS_ENV}
-      BUNDLE_PATH: "vendor/bundle"
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-      TZ: Asia/Tokyo
+
 volumes:
   postgress-data:
   # bundle:

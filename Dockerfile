@@ -4,7 +4,8 @@ FROM ruby:3.1.2
 ARG WORKDIR
 
 ENV LANG=C.UTF-8 \
-    TZ=Asia/Tokyo
+    TZ=Asia/Tokyo \
+    BUNDLE_PATH=vendor/bundle
 
 WORKDIR ${WORKDIR}
 
