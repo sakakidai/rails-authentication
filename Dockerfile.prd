@@ -7,13 +7,13 @@ ENV LANG=C.UTF-8 \
     TZ=Asia/Tokyo \
     BUNDLE_PATH=vendor/bundle
 
-WORKDIR ${WORKDIR}
+WORKDIR /app
 
 RUN echo "alias ll='ls -lG'" >> /root/.bashrc
 RUN gem install bundler
 
-COPY Gemfile Gemfile.lock ${WORKDIR}/
-RUN bundle install
-COPY . ${WORKDIR}
+COPY Gemfile Gemfile.lock /app/
+# RUN bundle install
+COPY . /app
 
 CMD ["bash"]
