@@ -5,13 +5,15 @@ ARG WORKDIR
 
 ENV LANG=C.UTF-8 \
     TZ=Asia/Tokyo \
-    BUNDLE_PATH=vendor/bundle \
-    HOME=/${WORKDIR}
+    BUNDLE_PATH=vendor/bundle
 
 WORKDIR ${WORKDIR}
 
 RUN echo "alias ll='ls -lG'" >> /root/.bashrc
 RUN gem install bundler
+
+COPY Gemfile Gemfile.lock ${WORKDIR}/
 RUN bundle install
+COPY . ${WORKDIR}
 
 CMD ["bash"]
