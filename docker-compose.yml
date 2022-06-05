@@ -19,6 +19,7 @@ services:
       args:
         WORKDIR: $WORKDIR
     working_dir: ${WORKDIR}
+    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
     init: true
     tty: true
     stdin_open: true

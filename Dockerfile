@@ -3,6 +3,9 @@ FROM ruby:3.1.2
 # Pass WORKDIR environment variable form docker-compose.yml to Dockerfile
 ARG WORKDIR
 
+ENV LANG=C.UTF-8 \
+    TZ=Asia/Tokyo
+
 WORKDIR ${WORKDIR}
 
 RUN echo "alias ll='ls -lG'" >> /root/.bashrc
