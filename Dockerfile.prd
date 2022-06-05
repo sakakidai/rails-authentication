@@ -11,8 +11,8 @@ WORKDIR ${WORKDIR}
 
 RUN gem install bundler
 
-COPY --chown=rails Gemfile Gemfile.lock ${WORKDIR}/
+COPY Gemfile Gemfile.lock ${WORKDIR}/
 RUN bundle install
-COPY --chown=rails . ${WORKDIR}
+COPY . ${WORKDIR}
 
 CMD ["bash"]
