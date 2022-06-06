@@ -26,9 +26,6 @@ port ENV.fetch("PORT") { 3000 }
 # Specifies the `environment` that Puma will run in.
 environment ENV.fetch("RACK_ENV") { "development" }
 
-# Specifies the `pidfile` that Puma will use.
-pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
-
 on_worker_boot do
   # Worker specific setup for Rails 4.1+
   # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
