@@ -74,5 +74,64 @@ $ heroku run bundle config
 
 ```
 $ heroku run bundle exec rails db:migrate
+$ heroku open /api/v1/hello
 ```
+
+## herokuの確認
+
+### プロセス確認
+
+```
+$ heroku ps
+```
+
+### herokuのコンテナにログイン
+
+```
+$ heroku run bash
+
+# タイムゾーン確認
+$ date
+```
+
+## postgresの確認
+
+### ローカルにpostgresをインストール
+
+```
+$ brew install postgresql
+```
+
+### herokuのpostgresのプラン情報を確認
+
+```
+$ heroku pg:info
+```
+
+### herokuのpostgresの接続情報
+
+```
+$ heroku pg:credentials:url
+```
+
+### postgresにアクセス
+
+```
+$ heroku pg:psql <アドオン名>
+
+# タイムゾーン確認
+=> show timezone;
+
+# タイムゾーン変更
+=> ALTER DATABASE your_database_name SET timezone = 'Asia/Tokyo';
+
+# 一度抜けてからタイムゾーン確認
+=> show timezone;
+```
+
+
+
+
+
+
 
