@@ -1,24 +1,78 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## herokuの初期設定
 
-Things you may want to cover:
+### 本番用のDockerfile
 
-* Ruby version
+・イメージにソースコードの含める
 
-* System dependencies
+・bundle installを行う
 
-* Configuration
+・herokuのユーザはdynoグループで自動作成される
 
-* Database creation
+### ログイン
 
-* Database initialization
+```
+$ heroku login
+```
 
-* How to run the test suite
+### ベータ版にアップデート
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ heroku update beta
+```
 
-* Deployment instructions
+### manifestをインストール
 
-* ...
+```
+$ heroku plugins:install @heroku-cli/plugin-manifest
+$ heroku plugins
+```
+
+### herokuアプリの作成
+
+```
+$ heroku create <任意のアプリ名> --manifest
+$ heroku open
+```
+
+### herokuのリモートリポジトリが追加されていることを確認
+
+```
+$ git remote -v
+```
+
+### スタックの確認
+
+```
+$ heroku stack
+$ heroku stack:set container
+```
+
+### herokuにソースをpush
+
+```
+$ git push heroku main
+```
+
+### herokuの環境変数を設定する
+
+```
+$ pbcopy < config/master.key
+$ heroku config:set RAILS_MASTER_KEY=<マスターキー>
+$ heroku config
+```
+
+### gemのインストールのパスを確認する
+
+```
+# vendor/bundle配下になっていること
+$ heroku run bundle config
+```
+
+### マイグレーションの実行
+
+```
+$ heroku run bundle exec rails db:migrate
+```
+
