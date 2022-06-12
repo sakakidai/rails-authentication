@@ -7,6 +7,6 @@ table_names.each do |table_name|
 
   next unless File.exist?(path)
 
-  puts "#{table_name}..."
+  puts "Creating #{table_name}..."
   require path
 end
