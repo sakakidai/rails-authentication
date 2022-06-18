@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include TokenGenerateService
+
   before_validation :downcase_email
 
   VALID_PASSWORD_REGEX = /\A[\w\-]+\z/
